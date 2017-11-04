@@ -16,7 +16,11 @@ public enum HttpMethod {
 
     POST,
 
+    POST_RAW,
+
     PUT,
+
+    PUT_RAW,
 
     PATCH,
 

@@ -23,6 +23,13 @@
 * 代码越简洁，命名的单词越短，越简洁，不需要 set xxx
 
 
+## 网络框架搭建
+
+
+## Loading 搭建
+
+父类 Activity 尽量使用 AppCompatActivity, 保证兼容到更多的手机设备
+
 
 ## 需要更深入研究
 

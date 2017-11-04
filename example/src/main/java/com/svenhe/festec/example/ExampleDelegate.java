@@ -16,6 +16,7 @@ import com.svenhe.latte_core.net.callback.IError;
 import com.svenhe.latte_core.net.callback.IFailure;
 import com.svenhe.latte_core.net.callback.IRequest;
 import com.svenhe.latte_core.net.callback.ISuccess;
+import com.svenhe.latte_core.ui.LoaderStyle;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import butterknife.BindView;
@@ -36,8 +37,6 @@ public class ExampleDelegate extends LatteDelegate {
     //    @BindView(R.id.btn_erq)
     Button btnReq;
 
-//    AVLoadingIndicatorView mAvi;
-
     @Override
     public Object setLayout() {
         return R.layout.delegate_example;
@@ -48,15 +47,12 @@ public class ExampleDelegate extends LatteDelegate {
 
         btnReq = (Button) rootView.findViewById(R.id.btn_erq);
 
-//        mAvi = (AVLoadingIndicatorView) rootView.findViewById(R.id.avi);
-
 
         btnReq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                test();
+                test();
 
-//                mAvi.hide();
             }
         });
 
@@ -87,6 +83,8 @@ public class ExampleDelegate extends LatteDelegate {
                     }
                 })
                 .checkParams()
+                .context(getActivity())
+                .loader(LoaderStyle.BallSpinFadeLoaderIndicator)
                 .build()
                 .get();
         ;
