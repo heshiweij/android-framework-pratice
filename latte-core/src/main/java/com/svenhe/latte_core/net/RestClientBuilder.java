@@ -46,6 +46,10 @@ public class RestClientBuilder {
 
     private File mFile;
 
+    private String mDownloadFileDir;
+    private String mDownloadFileExtension;
+    private String mDownloadFileName;
+
     /**
      * 只能被 RestClient 使用
      */
@@ -127,23 +131,61 @@ public class RestClientBuilder {
         return this;
     }
 
-    public RestClientBuilder file(File file){
+    public RestClientBuilder file(File file) {
         this.mFile = file;
         return this;
     }
 
-    public RestClientBuilder file(String file){
+    public RestClientBuilder file(String file) {
         this.mFile = new File(file);
         return this;
     }
+
+    /**
+     * 设置文件存放目录 (下载文件)
+     *
+     * @param dir 文件存放目录
+     * @return
+     */
+    public RestClientBuilder dir(String dir) {
+        this.mDownloadFileDir = dir;
+        return this;
+    }
+
+    /**
+     * 设置文件后缀 (下载文件)
+     *
+     * @param extension 后缀
+     * @return
+     */
+    public RestClientBuilder extension(String extension) {
+        this.mDownloadFileExtension = extension;
+        return this;
+    }
+
+
+    /**
+     * 设置文件名 (下载文件)
+     *
+     * @param filename 文件名
+     * @return
+     */
+    public RestClientBuilder filename(String filename) {
+        this.mDownloadFileName = filename;
+        return this;
+    }
+
 
     public RestClient build() {
         return new RestClient(mURL, // 地址
                 mParams, mRequestBody, // 数据
                 mIRequest, mISuccess, mIError, mIFailure, // 回调
                 mContext, mLoaderStyle, // loader 资源
-                mFile // 上传文件
-                );
+                mFile, // 上传文件
+                mDownloadFileDir, // 下载文件 - 文件存放目录
+                mDownloadFileExtension, // 下载文件 - 文件后缀
+                mDownloadFileName // 下载文件 - 文件名
+        );
     }
 
 }

@@ -9,6 +9,7 @@ import com.svenhe.latte_core.net.callback.IFailure;
 import com.svenhe.latte_core.net.callback.IRequest;
 import com.svenhe.latte_core.net.callback.ISuccess;
 import com.svenhe.latte_core.net.callback.RequestCallbacks;
+import com.svenhe.latte_core.net.download.DownloadHandler;
 import com.svenhe.latte_core.ui.LatteLoader;
 import com.svenhe.latte_core.ui.LoaderStyle;
 
@@ -32,12 +33,15 @@ import retrofit2.Call;
  */
 public class RestClient {
 
+    // 请求地址
     private final String URL;
 
+    // 向服务器提交的数据
     private final WeakHashMap<String, Object> PARAMS;
 
     private final RequestBody BODY;
 
+    // 回调所需参数
     private final ISuccess SUCCESS;
 
     private final IError ERROR;
@@ -46,11 +50,20 @@ public class RestClient {
 
     private final IRequest REQUEST;
 
+    // 显示 loading 所需参数
     private final Context CONTEXT;
 
     private final LoaderStyle LOADER_STYLE;
 
+    // 文件上传所需参数
     private final File FILE;
+
+    // 文件下载所需参数
+    private final String DOWNLOAD_DIR;
+
+    private final String DOWNLOAD_FILE_EXTENSION;
+
+    private final String DOWNLOAD_FILE_NAME;
 
 
     public RestClient(String url,
@@ -62,7 +75,10 @@ public class RestClient {
                       IFailure failure,
                       Context context,
                       LoaderStyle loaderStyle,
-                      File file
+                      File file,
+                      String downloadFileDir,
+                      String downloadFileExtension,
+                      String downloadFileName
     ) {
 
         this.URL = url;
@@ -77,6 +93,11 @@ public class RestClient {
         this.LOADER_STYLE = loaderStyle;
 
         this.FILE = file;
+
+        this.DOWNLOAD_DIR = downloadFileDir;
+        this.DOWNLOAD_FILE_EXTENSION = downloadFileExtension;
+        this.DOWNLOAD_FILE_NAME = downloadFileName;
+
     }
 
     public static RestClientBuilder builder() {
@@ -153,26 +174,26 @@ public class RestClient {
 
     }
 
-    private void checkUrl(){
-        if (TextUtils.isEmpty(URL)){
+    private void checkUrl() {
+        if (TextUtils.isEmpty(URL)) {
             throw new RuntimeException("Sorry! The URL must not be empty");
         }
     }
 
-    private void checkParams(){
-        if (PARAMS == null){
+    private void checkParams() {
+        if (PARAMS == null) {
             throw new RuntimeException("Sorry! The PARAMS must not be empty");
         }
     }
 
-    private void checkBody(){
-        if (BODY == null){
+    private void checkBody() {
+        if (BODY == null) {
             throw new RuntimeException("Sorry! The BODY must not be empty");
         }
     }
 
-    private void checkFile(){
-        if (FILE == null){
+    private void checkFile() {
+        if (FILE == null) {
             throw new RuntimeException("Sorry! The FILE must not be empty");
         }
     }
@@ -218,8 +239,21 @@ public class RestClient {
         request(HttpMethod.DELETE);
     }
 
-    public void upload(){
+    public void upload() {
         request(HttpMethod.UPLOAD);
+    }
+
+    public void download() {
+        new DownloadHandler(URL,
+                PARAMS,
+                REQUEST,
+                DOWNLOAD_DIR,
+                DOWNLOAD_FILE_EXTENSION,
+                DOWNLOAD_FILE_NAME,
+                SUCCESS,
+                ERROR,
+                FAILURE
+        ).handleDownload();
     }
 
 }

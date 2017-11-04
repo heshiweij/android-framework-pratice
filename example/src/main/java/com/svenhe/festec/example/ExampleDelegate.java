@@ -59,10 +59,12 @@ public class ExampleDelegate extends LatteDelegate {
 
     }
 
+
     private void test() {
 
         RestClient.builder()
-                .url("https://www.baidu.com")
+//                .url("https://www.baidu.com")
+                .url("http://static.699pic.com/images/sup_up/c54693515c85d957f7cb6947d7c0cbf2.jpg")
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
@@ -85,8 +87,11 @@ public class ExampleDelegate extends LatteDelegate {
                 .checkParams()
                 .context(getActivity())
                 .loader(LoaderStyle.BallSpinFadeLoaderIndicator)
+                .dir("hehe")
+                .extension(".jpg")
+                .filename("hahaha")
                 .build()
-                .get();
+                .download();
         ;
     }
 
