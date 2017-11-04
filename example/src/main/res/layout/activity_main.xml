@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     tools:context="com.svenhe.festec.example.MainActivity">
 
-    <TextView
+
+    <com.joanzapata.iconify.widget.IconTextView
+        android:text="I {fa-heart-o} to {fa-code} on {fa-android}"
+        android:textSize="32sp"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="HardcodedText" />
+
 
 </android.support.constraint.ConstraintLayout>

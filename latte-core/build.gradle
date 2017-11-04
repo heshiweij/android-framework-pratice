@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 25
@@ -26,8 +27,33 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+    // Android Support包
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     testCompile 'junit:junit:4.12'
     compile project(':latte-annotations')
+
+    // 字体图标库
+    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
+    compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
+
+    // fragmentation
+    compile 'me.yokeyword:fragmentation:1.1.7'
+    compile 'me.yokeyword:fragmentation-swipeback:1.1.7'
+
+    // 依赖注入
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    // 网络请求依赖
+    compile 'com.squareup.okio:okio:1.13.0'
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.3.0'
+
+    // loading 加载动画
+    compile 'com.wang.avi:library:2.1.3'
+
+
 }
