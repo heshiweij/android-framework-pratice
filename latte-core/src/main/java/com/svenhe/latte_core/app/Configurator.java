@@ -1,6 +1,12 @@
 package com.svenhe.latte_core.app;
 
+import android.content.Context;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import okhttp3.Interceptor;
 
 /**
  * @项目名: FestEC
@@ -18,6 +24,8 @@ public class Configurator {
      * 全局配置
      */
     private static final HashMap<String, Object> LATTE_CONFIGS = new HashMap<>();
+
+    private static final List<Interceptor> INTERCEPTORS = new ArrayList<>();
 
     public Configurator() {
 
@@ -37,6 +45,10 @@ public class Configurator {
 
     public HashMap<String, Object> getLatteConfigs() {
         return LATTE_CONFIGS;
+    }
+
+    public List<Interceptor> getInterceptors(){
+        return (List<Interceptor>) LATTE_CONFIGS.get(ConfigType.INTERCEPT);
     }
 
     /**
@@ -68,6 +80,18 @@ public class Configurator {
      */
     public final Configurator withApiHost(String host) {
         LATTE_CONFIGS.put(ConfigType.API_HOST.name(), host);
+        return this;
+    }
+
+    public final Configurator withIntercept(Interceptor intercept){
+        INTERCEPTORS.add(intercept);
+        LATTE_CONFIGS.put(ConfigType.INTERCEPT.name(), INTERCEPTORS);
+        return this;
+    }
+
+    public final Configurator withIntercept(List<Interceptor> intercepts){
+        INTERCEPTORS.addAll(intercepts);
+        LATTE_CONFIGS.put(ConfigType.INTERCEPT.name(), INTERCEPTORS);
         return this;
     }
 

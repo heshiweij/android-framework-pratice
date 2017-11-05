@@ -30,6 +30,11 @@ public enum ConfigType {
     /**
      * 图标资源
      */
-    ICON
+    ICON,
+
+    /**
+     * 拦截器
+     */
+    INTERCEPT
 
 }

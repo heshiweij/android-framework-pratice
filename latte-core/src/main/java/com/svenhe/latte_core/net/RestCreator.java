@@ -4,8 +4,10 @@ import com.svenhe.latte_core.app.ConfigType;
 import com.svenhe.latte_core.app.Configurator;
 import com.svenhe.latte_core.app.Latte;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -36,12 +38,33 @@ public class RestCreator {
 
     private static class OkHttpHolder {
         private static final int TIME_OUT = 60;
-        private static final OkHttpClient HTTP_CLIENT =
-                new OkHttpClient.Builder()
-//                        .addInterceptor() // 拦截器, 只有响应
-//                        .addNetworkInterceptor() // 拦截器, 请求和响应
-                        .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
-                        .build();
+
+        private static final List<Interceptor> INTERCEPTORS = Configurator.getInstance().getInterceptors();
+
+        private static final OkHttpClient.Builder OK_HTTP_BUILDER = new OkHttpClient
+                .Builder()
+                .connectTimeout(TIME_OUT, TimeUnit.SECONDS);
+
+        private static OkHttpClient.Builder addIntercepts() {
+            if (INTERCEPTORS != null && !INTERCEPTORS.isEmpty()) {
+                for (Interceptor interceptor : INTERCEPTORS) {
+                    OK_HTTP_BUILDER.addInterceptor(interceptor);
+                }
+            }
+
+            return OK_HTTP_BUILDER;
+        }
+
+//        addIntercepts
+
+        private static final OkHttpClient HTTP_CLIENT = addIntercepts().build();
+
+//        private static final OkHttpClient HTTP_CLIENT =
+//                new OkHttpClient.Builder()
+////                        .addInterceptor() // 拦截器, 只有响应
+////                        .addNetworkInterceptor() // 拦截器, 请求和响应
+//                        .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
+//                        .build();
     }
 
     private static class RestServiceHolder {

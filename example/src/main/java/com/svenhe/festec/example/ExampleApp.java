@@ -5,6 +5,9 @@ import android.app.Application;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.svenhe.latte_core.app.Latte;
+import com.svenhe.latte_core.net.intercepts.DebugInterceptor;
+
+import okhttp3.internal.http.BridgeInterceptor;
 
 /**
  * @项目名: FestEC
@@ -26,6 +29,7 @@ public class ExampleApp extends Application {
 
         Latte.init(this)
                 .withApiHost("http://127.0.0.1")
+//                .withIntercept(new DebugInterceptor("http://127.0.0.1/index", R.raw.test))
                 .configure();
 
         Iconify

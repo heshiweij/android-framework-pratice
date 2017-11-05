@@ -28,8 +28,15 @@
 
 ## Loading 搭建
 
-父类 Activity 尽量使用 AppCompatActivity, 保证兼容到更多的手机设备
+* 父类 Activity 尽量使用 AppCompatActivity, 保证兼容到更多的手机设备
 
+* LinkedHashMap 和 HashMap 区别: LinkedHashMap 是有序的
+
+* 要做一个新功能钱，先去 github 上看看，有没有现成的，别当造轮子大师(仅仅针对项目开发)
+
+## 
+
+* Android 中，资源名称不能使用 “-”, 应该使用 "_"
 
 ## 需要更深入研究
 
