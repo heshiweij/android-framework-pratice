@@ -6,7 +6,7 @@ import com.svenhe.latte_core.net.callback.IError;
 import com.svenhe.latte_core.net.callback.IFailure;
 import com.svenhe.latte_core.net.callback.IRequest;
 import com.svenhe.latte_core.net.callback.ISuccess;
-import com.svenhe.latte_core.ui.LoaderStyle;
+import com.svenhe.latte_core.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.WeakHashMap;

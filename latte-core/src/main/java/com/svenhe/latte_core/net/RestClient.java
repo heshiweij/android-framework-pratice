@@ -1,7 +1,6 @@
 package com.svenhe.latte_core.net;
 
 import android.content.Context;
-import android.content.pm.ProviderInfo;
 import android.text.TextUtils;
 
 import com.svenhe.latte_core.net.callback.IError;
@@ -10,13 +9,12 @@ import com.svenhe.latte_core.net.callback.IRequest;
 import com.svenhe.latte_core.net.callback.ISuccess;
 import com.svenhe.latte_core.net.callback.RequestCallbacks;
 import com.svenhe.latte_core.net.download.DownloadHandler;
-import com.svenhe.latte_core.ui.LatteLoader;
-import com.svenhe.latte_core.ui.LoaderStyle;
+import com.svenhe.latte_core.ui.loader.LatteLoader;
+import com.svenhe.latte_core.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.WeakHashMap;
 
-import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;

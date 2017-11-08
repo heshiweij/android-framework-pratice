@@ -1,4 +1,4 @@
-package com.svenhe.latte_core.ui;
+package com.svenhe.latte_core.ui.loader;
 
 import android.content.Context;
 import android.net.LinkAddress;

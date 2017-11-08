@@ -1,26 +1,19 @@
 package com.svenhe.festec.example;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.svenhe.latte_core.app.Configurator;
 import com.svenhe.latte_core.app.Latte;
 import com.svenhe.latte_core.delegates.LatteDelegate;
 import com.svenhe.latte_core.net.RestClient;
 import com.svenhe.latte_core.net.callback.IError;
 import com.svenhe.latte_core.net.callback.IFailure;
-import com.svenhe.latte_core.net.callback.IRequest;
 import com.svenhe.latte_core.net.callback.ISuccess;
-import com.svenhe.latte_core.ui.LoaderStyle;
-import com.wang.avi.AVLoadingIndicatorView;
+import com.svenhe.latte_core.ui.loader.LoaderStyle;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * @项目名: FestEC
@@ -34,7 +27,7 @@ import butterknife.ButterKnife;
  */
 public class ExampleDelegate extends LatteDelegate {
 
-    //    @BindView(R.id.btn_erq)
+    @BindView(R.id.btn_erq)
     Button btnReq;
 
     @Override
@@ -45,13 +38,12 @@ public class ExampleDelegate extends LatteDelegate {
     @Override
     protected void onBindView(Bundle savedInstanceState, View rootView) {
 
-        btnReq = (Button) rootView.findViewById(R.id.btn_erq);
-
-
         btnReq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                test();
+//                test();
+
+                Toast.makeText(Latte.getApplicationContext(), "c54693515c85d957f7cb6947d7c0cbf2", Toast.LENGTH_SHORT).show();
 
             }
         });

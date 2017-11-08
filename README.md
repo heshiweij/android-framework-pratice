@@ -34,9 +34,21 @@
 
 * 要做一个新功能钱，先去 github 上看看，有没有现成的，别当造轮子大师(仅仅针对项目开发)
 
-## 
+## 拦截器的设计和实现
 
 * Android 中，资源名称不能使用 “-”, 应该使用 "_"
+
+## 启动页的实现
+
+* Butterknife 支持在父类 bind，子类直接使用，但是必须保证每个要用到butterknife的项目都引入了 
+
+         <!-- compile 'com.jakewharton:butterknife:8.8.1' -->
+         annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+         
+         (butterknife 可以依赖 core 的，但是每个项目必须要加 butterknife-compiler )
+     
+     并且，如果是 library，必须加上 apply plugin: 'com.jakewharton.butterknife'
+     
 
 ## 需要更深入研究
 

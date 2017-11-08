@@ -27,4 +27,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':latte-ec')
     annotationProcessor project(':latte-compiler')
+
+    // 依赖注入( 每个项目必须要加 annotationProcessor，否则 bind 之后，view 依然是 null )
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }

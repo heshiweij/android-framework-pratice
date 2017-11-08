@@ -2,10 +2,17 @@ package com.svenhe.festec.example;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 import com.svenhe.latte_core.activities.ProxyActivity;
 import com.svenhe.latte_core.delegates.LatteDelegate;
+import com.svenhe.latte_ec.launcher.LauncherDelegate;
+import com.svenhe.latte_ec.launcher.LauncherScrollerDelegate;
+import com.svenhe.latte_ec.sign.SignUpDelegate;
+
+import butterknife.BindView;
 
 /**
  * @项目名: FestEC
@@ -19,9 +26,20 @@ import com.svenhe.latte_core.delegates.LatteDelegate;
  */
 public class ExampleActivity extends ProxyActivity {
 
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // 去除 ActionBar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+    }
+
     @Override
     public LatteDelegate setRootDelegate() {
-        return new ExampleDelegate();
+//        return new LauncherScrollerDelegate();
+//        return new LauncherDelegate();
+        return new SignUpDelegate();
     }
 
 }

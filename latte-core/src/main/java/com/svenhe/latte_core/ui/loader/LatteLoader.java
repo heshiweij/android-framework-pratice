@@ -1,6 +1,5 @@
-package com.svenhe.latte_core.ui;
+package com.svenhe.latte_core.ui.loader;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v7.app.AppCompatDialog;
 import android.view.Gravity;

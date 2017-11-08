@@ -1,7 +1,7 @@
 package com.svenhe.latte_core.net.callback;
 
-import com.svenhe.latte_core.ui.LatteLoader;
-import com.svenhe.latte_core.ui.LoaderStyle;
+import com.svenhe.latte_core.ui.loader.LatteLoader;
+import com.svenhe.latte_core.ui.loader.LoaderStyle;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -1,4 +1,4 @@
-package com.svenhe.latte_core.ui;
+package com.svenhe.latte_core.ui.loader;
 
 /**
  * @项目名: FestEC
